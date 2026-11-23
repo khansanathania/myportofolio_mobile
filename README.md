@@ -141,3 +141,38 @@ Dalam pengembangan MyPortfolio Mobile, hot reload dapat digunakan untuk melihat 
 ## 5. Deklarasi Penggunaan AI
 
 Saya tidak menggunakan AI dalam pengerjaan Tugas Individu 7. Pengerjaan dilakukan secara mandiri berdasarkan instruksi dari Tugas Individu 7 yang sudah memberikan clue pengerjaan dengan sangat jelas.
+
+
+## Tugas 8
+
+1. **Jelaskan perbedaan antara `Navigator.push()`, `Navigator.pushReplacement()`, dan `Navigator.pop()`. Metode apa yang digunakan untuk membuka formulir dari kartu aksi? Jelaskan juga bagaimana opsi Home di drawer membawa pengguna kembali ke halaman utama.**
+
+   `Navigator.push()` digunakan untuk membuka halaman baru tanpa menghapus halaman sebelumnya dari navigation stack, sehingga pengguna masih bisa kembali ke halaman sebelumnya. `Navigator.pushReplacement()` digunakan untuk membuka halaman baru dengan menggantikan halaman yang sedang aktif, sedangkan `Navigator.pop()` digunakan untuk menutup halaman saat ini dan kembali ke halaman sebelumnya.
+
+   Pada tugas ini, `Navigator.push()` digunakan untuk membuka halaman formulir melalui kartu aksi agar pengguna tetap bisa kembali ke halaman utama. Sementara itu, opsi **Home** pada drawer digunakan untuk mengarahkan pengguna kembali ke halaman utama melalui navigasi.
+
+2. **Bagaimana susunan `Scaffold`, `AppBar`, dan `Drawer` membantu menjaga struktur halaman tetap konsisten? Berikan satu contoh penggunaan warna tema portofolio di lebih dari satu halaman.**
+
+   `Scaffold` digunakan sebagai kerangka dasar halaman, `AppBar` untuk menampilkan bagian atas halaman, dan `Drawer` untuk menyediakan menu navigasi. Penggunaan widget tersebut membantu menjaga struktur dan tampilan aplikasi agar tetap konsisten di setiap halaman. Contohnya, warna utama dari tema portofolio digunakan pada `AppBar` di halaman utama dan halaman formulir sehingga tampilan aplikasi terlihat seragam.
+
+3. **Mengapa tata letak tersebut dipilih untuk formulir? Jelaskan peran widget pengatur jarak dan widget penggulir ketika ruang layar terbatas.**
+
+   Formulir disusun secara vertikal menggunakan `Column` agar pengguna dapat mengisi setiap input secara berurutan dan lebih mudah dipahami. `Padding` dan `SizedBox` digunakan untuk memberikan jarak antarinput supaya tampilan tidak terlalu rapat dan lebih rapi. Selain itu, `SingleChildScrollView` digunakan agar halaman tetap bisa di-scroll ketika ukuran layar terbatas atau keyboard muncul, sehingga semua input dan tombol **Simpan** tetap dapat diakses.
+
+4. **Apa peran `GlobalKey<FormState>`, `validator`, dan `validate()` saat tombol Simpan ditekan? Berikan satu contoh nilai yang ditolak oleh validasi dan jelaskan mengapa memilih jenis input atau papan ketik saja belum cukup.**
+
+   `GlobalKey<FormState>` digunakan untuk mengakses dan mengelola kondisi formulir. `validator` berfungsi untuk memeriksa apakah input sudah sesuai dengan aturan yang ditentukan, sedangkan `validate()` digunakan untuk menjalankan seluruh validasi ketika tombol **Simpan** ditekan. Jika semua input valid, data yang dimasukkan akan ditampilkan melalui `AlertDialog`.
+
+   Contohnya, input nama institusi yang hanya berisi spasi akan ditolak karena dianggap kosong setelah menggunakan `trim()`. Penggunaan jenis input atau keyboard tertentu saja belum cukup karena pengguna masih bisa memasukkan data yang tidak sesuai. Oleh karena itu, validasi tetap diperlukan agar data yang diterima sesuai dengan ketentuan formulir.
+
+
+### Deklarasi Penggunaan AI (Tugas 8)
+
+Pada Tugas 8 saya menggunakan Claude (Anthropic) lewat claude.ai sebagai alat bantu belajar, terutama untuk memahami konsep navigasi di Flutter. Saya menanyakan perbedaan `Navigator.push()`, `Navigator.pushReplacement()`, dan `Navigator.pop()`, cara memanggilnya dari `onTap`/`onPressed`, serta cara mengirim data ke halaman tujuan lewat constructor. Penjelasan tersebut membantu saya menjawab pertanyaan reflektif nomor 1. 
+
+Strategi prompting saya adalah bertanya secara bertahap, mulai dari konsep dasar (apa bedanya), lalu cara penggunaan, lalu pertanyaan lanjutan seperti "ngirimnya lewat constructor?" sampai saya benar-benar paham. Saya tidak meminta AI menulis seluruh tugas. Untuk formulir, validasi, dan dialog ringkasan, saya mengikuti langkah-langkah di Tutorial 09 dan menyesuaikannya dengan field bagian.
+
+Terdapat beberapa keterbatasan pada jawaban AI. Contoh kode yang diberikan bersifat generik (misalnya `DetailPage` dan `ItemFormPage`), sehingga saya sesuaikan dengan struktur proyek saya (`lib/screens/` dan `lib/widgets/`) serta model portofolio saya. AI juga menyarankan `pushReplacement` untuk item drawer, sedangkan ketentuan tugas meminta kartu aksi memakai `Navigator.push()` agar tombol kembali tetap berfungsi, sehingga saya menyesuaikannya dengan instruksi tugas. Hasil akhirnya saya verifikasi dengan menjalankan aplikasi di Chrome dan `flutter analyze`.
+
+Log percakapan dengan Claude: https://claude.ai/share/d85d4ad7-2e71-444e-a13a-1193ec999b4a
+
